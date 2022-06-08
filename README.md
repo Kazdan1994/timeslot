@@ -1,2 +1,2 @@
 # typescript-templates
-A typescript template with eslint (config airbnb), prettier and jest
+A typescript template with eslint, prettier and jest
