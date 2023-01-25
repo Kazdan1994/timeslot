@@ -11,6 +11,9 @@ export default class Timeslot {
     if (!isValid(end)) {
       throw new Error("Invalid end date");
     }
+    if (end < start) {
+      throw new Error("Start must be before end");
+    }
 
     this.start = start;
     this.end = end;
@@ -26,5 +29,9 @@ export default class Timeslot {
 
   isAfter(slot: Timeslot) {
     return this.start > slot.start && this.end > slot.end;
+  }
+
+  isOverlaps(slot: Timeslot) {
+    return this.start <= slot.end && this.end >= slot.start;
   }
 }

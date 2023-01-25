@@ -56,5 +56,42 @@ describe("timeslot class test", () => {
         new Timeslot(new Date("2022-06-08T10:00:00"), new Date("invalid"));
       }).toThrowError("Invalid end date");
     });
+
+    it("should throw Error if start is before end", () => {
+      expect(() => {
+        new Timeslot(
+          new Date("2022-06-08T11:00:00"),
+          new Date("2022-06-08T10:00:00")
+        );
+      }).toThrowError("Start must be before end");
+    });
+  });
+
+  describe.only("is timeslots overlaps", () => {
+    it("should return true if timeslots overlaps", () => {
+      const slot = new Timeslot(
+        new Date("2022-06-08T10:00:00"),
+        new Date("2022-06-08T12:00:00")
+      );
+      const slotOverlap = new Timeslot(
+        new Date("2022-06-08T11:00:00"),
+        new Date("2022-06-08T12:00:00")
+      );
+
+      expect(slot.isOverlaps(slotOverlap)).toBeTruthy();
+    });
+
+    it("should return false if timeslots not overlaps", () => {
+      const slot = new Timeslot(
+        new Date("2022-06-08T10:00:00"),
+        new Date("2022-06-08T12:00:00")
+      );
+      const slotOverlap = new Timeslot(
+        new Date("2022-06-08T13:00:00"),
+        new Date("2022-06-08T14:00:00")
+      );
+
+      expect(slot.isOverlaps(slotOverlap)).toBeFalsy();
+    });
   });
 });
