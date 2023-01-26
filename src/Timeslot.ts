@@ -1,6 +1,6 @@
 import { isValid } from "./utils";
 
-export default class Timeslot {
+export class Timeslot {
   private readonly start: Date;
   private readonly end: Date;
 
