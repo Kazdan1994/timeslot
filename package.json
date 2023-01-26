@@ -1,7 +1,15 @@
 {
   "name": "@akatek/timeslot",
-  "version": "1.0.0",
-  "main": "index.js",
+  "version": "1.0.1",
+  "main": "dist/cjs/index.js",
+  "module": "dist/mjs/index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/mjs/index.js",
+      "require": "./dist/cjs/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
   "license": "MIT",
   "keywords": [
     "timeslot",
@@ -9,10 +17,10 @@
   ],
   "author": "Arthur Jacquemin <arthurjacquemin2>",
   "scripts": {
-    "build": "esbuild src/index.ts --bundle --outfile=dist/index.js --format=cjs",
+    "build": "tsup src/index.ts --format cjs,esm --dts --clean",
     "test": "vitest",
-    "test:watch": "vitest --watch",
     "test:coverage": "vitest run --coverage",
+    "publish": "npm publish --access public",
     "lint": "eslint --ignore-path .eslintignore --ext .js,.ts .",
     "lint:fix": "eslint --fix --ignore-path .eslintignore --ext .js,.ts .",
     "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\""
@@ -21,15 +29,16 @@
     "@typescript-eslint/eslint-plugin": "^5.49.0",
     "@typescript-eslint/parser": "^5.49.0",
     "@vitest/coverage-istanbul": "^0.28.2",
-    "esbuild": "^0.17.4",
     "eslint": "^8.32.0",
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-import": "^2.27.5",
     "prettier": "^2.8.3",
+    "tsup": "^6.5.0",
     "typescript": "^4.9.4",
     "vitest": "^0.28.2"
   },
   "dependencies": {
+    "@types/node": "^18.11.18",
     "time-slotter": "^1.0.10"
   }
 }

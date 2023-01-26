@@ -95,4 +95,36 @@ describe("timeslot class test", () => {
       expect(slot.isOverlaps(slotOverlap)).toBeFalsy();
     });
   });
+
+  describe("getters", () => {
+    const start = new Date("2022-06-08T10:00:00");
+    const end = new Date("2022-06-08T12:00:00");
+
+    const slot = new Timeslot(start, end);
+
+    it("should return start property value", () => {
+      expect(slot.getStart()).toBe(start);
+    });
+    it("should return end property value", () => {
+      expect(slot.getEnd()).toBe(end);
+    });
+  });
+
+  describe("setters", () => {
+    const start = new Date("2022-06-08T10:00:00");
+    const newStart = new Date("2022-06-09T10:00:00");
+    const end = new Date("2022-06-08T12:00:00");
+    const newEnd = new Date("2022-06-09T12:00:00");
+
+    const slot = new Timeslot(start, end);
+
+    it("should return start property value", () => {
+      slot.setStart(newStart);
+      expect(slot.getStart()).toBe(newStart);
+    });
+    it("should return end property value", () => {
+      slot.setEnd(newEnd);
+      expect(slot.getEnd()).toBe(newEnd);
+    });
+  });
 });

@@ -1,8 +1,8 @@
 import { isValid } from "./utils";
 
 export class Timeslot {
-  private readonly start: Date;
-  private readonly end: Date;
+  private start: Date;
+  private end: Date;
 
   constructor(start: Date, end: Date) {
     if (!isValid(start)) {
@@ -19,19 +19,35 @@ export class Timeslot {
     this.end = end;
   }
 
-  isEqual(slot: Timeslot) {
+  isEqual(slot: Timeslot): boolean {
     return this.start === slot.start && this.end === slot.end;
   }
 
-  isBefore(slot: Timeslot) {
+  isBefore(slot: Timeslot): boolean {
     return this.start < slot.start && this.end < slot.end;
   }
 
-  isAfter(slot: Timeslot) {
+  isAfter(slot: Timeslot): boolean {
     return this.start > slot.start && this.end > slot.end;
   }
 
-  isOverlaps(slot: Timeslot) {
+  isOverlaps(slot: Timeslot): boolean {
     return this.start <= slot.end && this.end >= slot.start;
+  }
+
+  getStart(): Date {
+    return this.start;
+  }
+
+  getEnd(): Date {
+    return this.end;
+  }
+
+  setStart(start: Date): void {
+    this.start = start;
+  }
+
+  setEnd(end: Date): void {
+    this.end = end;
   }
 }
