@@ -1,4 +1,5 @@
-import Timeslot from "../src/Timeslot";
+import { describe, it, expect } from "vitest";
+import { Timeslot } from "../src";
 
 describe("timeslot class test", () => {
   it("should be true", () => {
@@ -67,7 +68,7 @@ describe("timeslot class test", () => {
     });
   });
 
-  describe.only("is timeslots overlaps", () => {
+  describe("is timeslots overlaps", () => {
     it("should return true if timeslots overlaps", () => {
       const slot = new Timeslot(
         new Date("2022-06-08T10:00:00"),
