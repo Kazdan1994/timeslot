@@ -20,7 +20,7 @@
     "build": "tsup src/index.ts --format cjs,esm --dts --clean",
     "test": "vitest",
     "test:coverage": "vitest run --coverage",
-    "publish": "pnpm build && pnpm publish dist --access public",
+    "publish": "pnpm build && copy /Y package.json dist && copy /Y readme.md dist && pnpm publish dist --access public",
     "lint": "eslint --ignore-path .eslintignore --ext .js,.ts .",
     "lint:fix": "eslint --fix --ignore-path .eslintignore --ext .js,.ts .",
     "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\""
